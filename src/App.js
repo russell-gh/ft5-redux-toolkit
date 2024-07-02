@@ -26,11 +26,11 @@ function App() {
     getApiData();
   }, []);
 
-  useEffect(() => {
-    if (message) toast(message);
+  // useEffect(() => {
+  //   if (message) toast(message);
 
-    dispatch(setMessage(""));
-  }, [message]);
+  //   dispatch(setMessage(""));
+  // }, [message]);
 
   return (
     <>

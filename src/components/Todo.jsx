@@ -4,6 +4,7 @@ import {
   setMessage,
 } from "../features/todos/todosSlice";
 import { useDispatch } from "react-redux";
+import Demo from "./Demo";
 
 const Todo = ({ id, title }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Todo = ({ id, title }) => {
       </button>
       <button
         onClick={() => {
-          dispatch(setMessage("Hello World" + id));
+          dispatch(setMessage(<Demo />));
         }}
       >
         Send message
