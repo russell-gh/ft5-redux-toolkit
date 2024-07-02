@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { storeApiData } from "./features/todos/todosSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  storeApiData,
+  setMessage,
+  selectMessage,
+} from "./features/todos/todosSlice";
 import Interface from "./components/Interface";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
+  const message = useSelector(selectMessage);
 
   const getApiData = async () => {
     const { data } = await axios.get(
@@ -19,8 +26,16 @@ function App() {
     getApiData();
   }, []);
 
+  useEffect(() => {
+    if (message) toast(message);
+
+    dispatch(setMessage(""));
+  }, [message]);
+
   return (
     <>
+      {message}
+      <ToastContainer />
       <Interface />
     </>
   );

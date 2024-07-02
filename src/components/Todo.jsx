@@ -1,4 +1,8 @@
-import { deleteTodo, toggleCompleted } from "../features/todos/todosSlice";
+import {
+  deleteTodo,
+  toggleCompleted,
+  setMessage,
+} from "../features/todos/todosSlice";
 import { useDispatch } from "react-redux";
 
 const Todo = ({ id, title }) => {
@@ -19,6 +23,13 @@ const Todo = ({ id, title }) => {
         }}
       >
         Delete
+      </button>
+      <button
+        onClick={() => {
+          dispatch(setMessage("Hello World" + id));
+        }}
+      >
+        Send message
       </button>
     </>
   );
